@@ -9,6 +9,7 @@ namespace Final_Project
     class Patron
     {
         //Data Members:
+        private string name;
         private string type;
         private int maxBooks;
         private List<Book> myBooks;
@@ -19,6 +20,7 @@ namespace Final_Project
         //Return: None
         public Patron()
         {
+            name = "";
             type = "";
             maxBooks = 0;
             myBooks = new List<Book>();
@@ -28,12 +30,22 @@ namespace Final_Project
         //Purpose: To set data members to given values
         //Parameters: 
         //Return: None
-        public Patron(string _type, int _maxBooks, List<Book> _myBooks)
+        public Patron(string _name, string _type, int _maxBooks, List<Book> _myBooks)
         {
+            name = _name;
             type = _type;
             maxBooks = _maxBooks;
             myBooks = _myBooks;
         } // end parameterized constructor
+
+        //The getName method
+        //Purpose: To return the value of name
+        //Parameters: None
+        //Return: name in the form of a string
+        public string getName()
+        {
+            return name;
+        } // end method getName()
 
         //The getType method
         //Purpose: To return the value of type
@@ -61,6 +73,15 @@ namespace Final_Project
         {
             return myBooks;
         } // end method getMyBooks()
+
+        //The setName method
+        //Purpose: To set name to the given value
+        //Parameters: A string represented as _name
+        //Return: None
+        public void setName(string _name)
+        {
+            name = _name;
+        } // end method setName()
 
         //The setType method
         //Purpose: To set type to the given value
