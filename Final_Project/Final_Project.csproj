@@ -75,6 +75,12 @@
     <Compile Include="RentBook.Designer.cs">
       <DependentUpon>RentBook.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Account.resx">
+      <DependentUpon>Account.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin.resx">
+      <DependentUpon>Admin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -106,6 +112,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\library.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book_background2.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
