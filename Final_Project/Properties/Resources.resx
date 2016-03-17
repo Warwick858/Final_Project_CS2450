@@ -121,10 +121,16 @@
   <data name="library" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\library.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="book_background" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\book_background.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="administration" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\administration.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="book_background2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\book_background2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="background" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\background.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rentbook" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rentbook.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="viewaccount" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\viewaccount.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

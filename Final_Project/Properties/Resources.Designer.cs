@@ -63,9 +63,9 @@ namespace Final_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap book_background {
+        internal static System.Drawing.Bitmap administration {
             get {
-                object obj = ResourceManager.GetObject("book_background", resourceCulture);
+                object obj = ResourceManager.GetObject("administration", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace Final_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap book_background2 {
+        internal static System.Drawing.Bitmap background {
             get {
-                object obj = ResourceManager.GetObject("book_background2", resourceCulture);
+                object obj = ResourceManager.GetObject("background", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -86,6 +86,26 @@ namespace Final_Project.Properties {
         internal static System.Drawing.Bitmap library {
             get {
                 object obj = ResourceManager.GetObject("library", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rentbook {
+            get {
+                object obj = ResourceManager.GetObject("rentbook", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap viewaccount {
+            get {
+                object obj = ResourceManager.GetObject("viewaccount", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
