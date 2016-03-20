@@ -4,38 +4,58 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Final_Project
 {
-    class Library
+    [XmlRoot]
+    public class Library
     {
         //Data Members:
-        private string name;
-        private List<Book> books;
-        private List<Book> overdueBooks;
-        private List<Patron> patrons;
+        private static Library instance;
+
+        [XmlElement]
+        public string name;
+
+        [XmlArray]
+        public List<Book> books;
+
+        //[XmlArray]
+        //List<string> overdueBooks;
+
+        [XmlArray]
+        public List<Patron> patrons;
 
         //The default constructor
         //Purpose: To initialize data members to default values
         //Parameters: None
         //Return: None
-        public Library()
+        private Library()
         {
             name = "";
             books = new List<Book>();
-            overdueBooks = new List<Book>();
+            //overdueBooks = new List<string>();
             patrons = new List<Patron>();
         } // end default constructor
+
+        //  Static method to get instance of singleton
+        //  returns library object
+        public static Library getInstance()
+        {
+            if (instance == null)
+                instance = new Library();
+            return instance;
+        }
 
         //The parameterized constructor
         //Purpose: To set data members to given values
         //Parameters: 
         //Return: None
-        public Library(string _name, List<Book> _books, List<Book> _overdueBooks, List<Patron> _patrons)
+        private Library(string _name, List<Book> _books, List<string> _overdueBooks, List<Patron> _patrons)
         {
             name = _name;
             books = _books;
-            overdueBooks = _overdueBooks;
+            //overdueBooks = _overdueBooks;
             patrons = _patrons;
         } // end parameterized constructor
 
@@ -63,7 +83,9 @@ namespace Final_Project
         //Return: overdueBooks in the form of a List of Book objects
         public List<Book> getOverdueBooks()
         {
-            return overdueBooks;
+            //  This is a Linq and lambda expression that gets a list of all the pointers to the overdue books
+            //return (List<Book>)books.Where(x => overdueBooks.Exists(y => y == x.uniqueId));
+            return (List<Book>)books.Where(x => x.getDueDate().CompareTo(DateTime.Today) < 0);  // zreview (change date to virtual date later)
         } // end method getOverdueBooks()
 
         //The getPatrons method
@@ -79,9 +101,21 @@ namespace Final_Project
         //Purpose: To read books from file and save as books
         //Parameters: A StreamReader object represented as _data
         //Return: None
-        public void readBooks(StreamReader _data)
+        public bool readBooks(StreamReader _data)
         {
             // zreview
+            try
+            {
+                //Library myLib = Library.getInstance();
+                XmlSerializer xs = new XmlSerializer(typeof(Library));
+                TextReader tr = _data;
+                instance = (Library)xs.Deserialize(tr);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
         } // end method readBooks()
 
 

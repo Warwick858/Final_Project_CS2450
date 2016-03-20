@@ -3,16 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Final_Project
 {
-    class Patron
+    public enum TYPE_PATRON { ADULT, CHILD };
+    [Serializable]
+    public class Patron
     {
         //Data Members:
-        private string name;
-        private string type;
-        private int maxBooks;
-        private List<Book> myBooks;
+        [XmlElement]
+        public string uniqueId;
+        [XmlElement]
+        public string name;
+        [XmlElement]
+        public TYPE_PATRON type;
+        [XmlElement]
+        public int maxBooks;
+        [XmlArray]
+        public List<string> myBooks;
 
         //The default constructor
         //Purpose: To initialize data members to default values
@@ -20,22 +29,27 @@ namespace Final_Project
         //Return: None
         public Patron()
         {
+            uniqueId = Guid.NewGuid().ToString();
             name = "";
-            type = "";
-            maxBooks = 0;
-            myBooks = new List<Book>();
+            type = TYPE_PATRON.ADULT;
+            maxBooks = 6;
+            myBooks = new List<string>();
         } // end default constructor
 
         //The parameterized constructor
         //Purpose: To set data members to given values
         //Parameters: 
         //Return: None
-        public Patron(string _name, string _type, int _maxBooks, List<Book> _myBooks)
+        public Patron(string _name, TYPE_PATRON _type, List<string> _myBooks)
         {
+            uniqueId = Guid.NewGuid().ToString();
             name = _name;
             type = _type;
-            maxBooks = _maxBooks;
-            myBooks = _myBooks;
+            if (_type == TYPE_PATRON.ADULT)
+                maxBooks = 6;
+            else
+                maxBooks = 3;
+            myBooks = _myBooks == null ? new List<string>() : _myBooks;
         } // end parameterized constructor
 
         //The getName method
@@ -51,7 +65,7 @@ namespace Final_Project
         //Purpose: To return the value of type
         //Parameters: None
         //Return: type in the form of a string
-        public string getType()
+        public TYPE_PATRON getType()
         {
             return type;
         } // end method getType()
@@ -71,7 +85,8 @@ namespace Final_Project
         //Return: myBooks in the form of a List of Book objects
         public List<Book> getMyBooks()
         {
-            return myBooks;
+            // linq expression to get books pointers
+            return (List<Book>)Library.getInstance().books.Where(x => myBooks.Exists(y => y == x.uniqueId));
         } // end method getMyBooks()
 
         //The setName method
@@ -87,7 +102,7 @@ namespace Final_Project
         //Purpose: To set type to the given value
         //Parameters: A string represented as _type
         //Return: None
-        public void setType(string _type)
+        public void setType(TYPE_PATRON _type)
         {
             type = _type;
         } // end method setType
@@ -105,7 +120,7 @@ namespace Final_Project
         //Purpose: To set myBooks to the given list
         //Parameters: A List of Book objects represented as _myBooks
         //Return: None
-        public void setMyBooks(List<Book> _myBooks)
+        public void setMyBooks(List<string> _myBooks)
         {
             myBooks = _myBooks;
         } // end method setMyBooks()
@@ -116,14 +131,17 @@ namespace Final_Project
         //Return: None
         public void addBook(Book _book)
         {
-            myBooks.Add(_book);
+            myBooks.Add(_book.uniqueId);
+            //  set the book as check out for that patron and checked out to true
+            Library.getInstance().books.First(x => x.uniqueId == _book.uniqueId).rentedBy = uniqueId;
+            Library.getInstance().books.First(x => x.uniqueId == _book.uniqueId).checkedOut = true;
         } // end method addBook()
 
         //The removeBooks method
         //Purpose: To remove the given book from this Patron's myBooks list
         //Parameters: A Book object represented as _book
         //Return: None
-        public void removeBook(Book _book)
+        public void removeBook(string _book)
         {
             myBooks.Remove(_book);
         } // end method removeBooks()

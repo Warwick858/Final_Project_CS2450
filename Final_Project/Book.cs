@@ -3,17 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Final_Project
 {
-    class Book
+    public enum TYPE_BOOK { ADULT, CHILD, DVD, VIDEOTAPE };
+
+    [Serializable]
+    public class Book
     {
         //Data Members:
-        private string title;
-        private string type;
-        private bool checkedOut;
-        private Patron rentedBy;
-        private DateTime dueDate;
+        [XmlElement]
+        public string uniqueId;
+        [XmlElement]
+        public string title;
+        [XmlElement]
+        public TYPE_BOOK type;
+        [XmlElement]
+        public bool checkedOut;
+        [XmlElement]
+        public string rentedBy;
+        [XmlElement]
+        public DateTime dueDate;
 
         //The default constructor
         //Purpose: To initialize data members to default values
@@ -21,10 +32,11 @@ namespace Final_Project
         //Return: None
         public Book()
         {
+            uniqueId = Guid.NewGuid().ToString();
             title = "";
-            type = "";
+            type = TYPE_BOOK.ADULT;
             checkedOut = false;
-            rentedBy = new Patron();
+            //rentedBy = new Patron();
             dueDate = new DateTime();
         } // end default constructor
 
@@ -32,12 +44,13 @@ namespace Final_Project
         //Purpose: To set data members to given values
         //Parameters: 
         //Return: None
-        public Book(string _title, string _type, bool _checkedOut, Patron _rentedBy, DateTime _dueDate)
+        public Book(string _title, TYPE_BOOK _type, bool _checkedOut, DateTime _dueDate)
         {
+            uniqueId = Guid.NewGuid().ToString();
             title = _title;
             type = _type;
             checkedOut = _checkedOut;
-            rentedBy = _rentedBy;
+            //rentedBy = _rentedBy;
             dueDate = _dueDate;
         } // end parameterized constructor
 
@@ -54,7 +67,7 @@ namespace Final_Project
         //Purpose: To return the value of type
         //Parameters: None
         //Return: type in the form of a string
-        public string getType()
+        public TYPE_BOOK getType()
         {
             return type;
         } // end method getType()
@@ -74,7 +87,7 @@ namespace Final_Project
         //Return: rentedBy in the form of a Patron object
         public Patron getRentedBy()
         {
-            return rentedBy;
+            return Library.getInstance().patrons.First(x => x.uniqueId == rentedBy);
         } // end method getRentedBy()
 
         //The getDueDate method
@@ -99,7 +112,7 @@ namespace Final_Project
         //Purpose: To set type to the given value
         //Parameters: A string represented as _type
         //Return: None
-        public void setType(string _type)
+        public void setType(TYPE_BOOK _type)
         {
             type = _type;
         } // end method setType()
@@ -119,7 +132,7 @@ namespace Final_Project
         //Return: None
         public void setRentedBy(Patron _renter)
         {
-            rentedBy = _renter;
+            rentedBy = _renter.uniqueId;
         } // end method setRentedBy()
 
         //The setdueDate method

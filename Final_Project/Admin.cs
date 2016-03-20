@@ -22,6 +22,8 @@ namespace Final_Project
         //Return: None
         public Admin()
         {
+            overdueBooks = new List<Book>();
+
             //Read overdue books from file
             readData();
 
@@ -35,14 +37,14 @@ namespace Final_Project
         public void readData()
         {
             //
-            StreamReader data = new StreamReader("C://test.txt");
+            //StreamReader data = new StreamReader("C://test.txt");
 
 
 
             //overdueBooks = 
 
             //
-            overdueBooksListBox.Items.Add(overdueBooks);
+            //overdueBooksListBox.Items.Add(overdueBooks);
         } // end method readData()
 
         //The doneBtn_Click method

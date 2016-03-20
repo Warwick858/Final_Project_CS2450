@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace Final_Project
 {
@@ -97,7 +99,12 @@ namespace Final_Project
 
             // zreview
 
-
+            if (filePath != null)
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(Library));
+                TextWriter text = new StreamWriter(filePath);
+                serializer.Serialize(text, Library.getInstance());
+            }
 
         } // end method MainForm_FormClosing()
     } // end class MainForm
