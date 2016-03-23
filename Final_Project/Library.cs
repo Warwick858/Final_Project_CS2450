@@ -38,14 +38,20 @@ namespace Final_Project
             patrons = new List<Patron>();
         } // end default constructor
 
-        //  Static method to get instance of singleton
-        //  returns library object
+        //The getInstance method
+        //Purpose: To create a new instance of Library if it doesn't already exist, else return existing instance
+        //Parameters: None
+        //Return: instance in the form of a Library object
         public static Library getInstance()
         {
+            //If Library instance does NOT exist
             if (instance == null)
-                instance = new Library();
+            {
+                instance = new Library(); // create new instance and save
+            } // end if
+                
             return instance;
-        }
+        } // end method getInstance()
 
         //The parameterized constructor
         //Purpose: To set data members to given values
@@ -83,9 +89,10 @@ namespace Final_Project
         //Return: overdueBooks in the form of a List of Book objects
         public List<Book> getOverdueBooks()
         {
-            //  This is a Linq and lambda expression that gets a list of all the pointers to the overdue books
             //return (List<Book>)books.Where(x => overdueBooks.Exists(y => y == x.uniqueId));
-            return (List<Book>)books.Where(x => x.getDueDate().CompareTo(DateTime.Today) < 0);  // zreview (change date to virtual date later)
+
+            //Use Linq and lambda expression to get a list of all the overdue books
+            return books.Where(x => x.getDueDate().CompareTo(DateTime.Today) < 0).ToList<Book>();  // zreview (change date to virtual date later)
         } // end method getOverdueBooks()
 
         //The getPatrons method
@@ -103,23 +110,23 @@ namespace Final_Project
         //Return: None
         public bool readBooks(StreamReader _data)
         {
-            // zreview
             try
             {
-                //Library myLib = Library.getInstance();
+                //Create new XmlSerializer using Library as type
                 XmlSerializer xs = new XmlSerializer(typeof(Library));
-                TextReader tr = _data;
-                instance = (Library)xs.Deserialize(tr);
-            }
+
+                //Save streamReader as textReader object
+                TextReader textReader = _data;
+
+                //Deserialize XML Library using textReader and save
+                instance = (Library)xs.Deserialize(textReader);
+            } // end try
             catch (Exception e)
             {
                 return false;
-            }
+            } // end catch
+
             return true;
         } // end method readBooks()
-
-
-
-
     } // end class Library
 } // end namespace Final_Project

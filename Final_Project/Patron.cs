@@ -8,18 +8,23 @@ using System.Xml.Serialization;
 namespace Final_Project
 {
     public enum TYPE_PATRON { ADULT, CHILD };
+
     [Serializable]
     public class Patron
     {
         //Data Members:
         [XmlElement]
         public string uniqueId;
+
         [XmlElement]
         public string name;
+
         [XmlElement]
         public TYPE_PATRON type;
+
         [XmlElement]
         public int maxBooks;
+
         [XmlArray]
         public List<string> myBooks;
 
@@ -45,10 +50,18 @@ namespace Final_Project
             uniqueId = Guid.NewGuid().ToString();
             name = _name;
             type = _type;
+
+            //If Patron is an adult
             if (_type == TYPE_PATRON.ADULT)
+            {
                 maxBooks = 6;
-            else
+            } // end if 
+            else // Patron is a child
+            {
                 maxBooks = 3;
+            } // end else
+                
+            //
             myBooks = _myBooks == null ? new List<string>() : _myBooks;
         } // end parameterized constructor
 
@@ -64,7 +77,7 @@ namespace Final_Project
         //The getType method
         //Purpose: To return the value of type
         //Parameters: None
-        //Return: type in the form of a string
+        //Return: type in the form of a TYPE_PATRON enum
         public TYPE_PATRON getType()
         {
             return type;
@@ -85,8 +98,10 @@ namespace Final_Project
         //Return: myBooks in the form of a List of Book objects
         public List<Book> getMyBooks()
         {
-            // linq expression to get books pointers
-            return (List<Book>)Library.getInstance().books.Where(x => myBooks.Exists(y => y == x.uniqueId));
+            //Use Linq expression to get books and return them
+            //return (List<Book>)Library.getInstance().books.Where(x => myBooks.Exists(y => y == x.uniqueId)); // THIS STATEMENT IS BROKE
+
+            return Library.getInstance().books.Where(x => myBooks.Exists(y => y == x.uniqueId)).ToList<Book>();
         } // end method getMyBooks()
 
         //The setName method
@@ -100,7 +115,7 @@ namespace Final_Project
 
         //The setType method
         //Purpose: To set type to the given value
-        //Parameters: A string represented as _type
+        //Parameters: A TYPE_PATRON enum represented as _type
         //Return: None
         public void setType(TYPE_PATRON _type)
         {
@@ -131,8 +146,10 @@ namespace Final_Project
         //Return: None
         public void addBook(Book _book)
         {
+            //Add the given book's GUID to myBooks
             myBooks.Add(_book.uniqueId);
-            //  set the book as check out for that patron and checked out to true
+
+            //Set the book as check out for that patron and checked out to true
             Library.getInstance().books.First(x => x.uniqueId == _book.uniqueId).rentedBy = uniqueId;
             Library.getInstance().books.First(x => x.uniqueId == _book.uniqueId).checkedOut = true;
         } // end method addBook()
@@ -145,8 +162,5 @@ namespace Final_Project
         {
             myBooks.Remove(_book);
         } // end method removeBooks()
-
-
-
     } // end class Patron
 } // end namespace Final_Project

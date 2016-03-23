@@ -15,14 +15,19 @@ namespace Final_Project
         //Data Members:
         [XmlElement]
         public string uniqueId;
+
         [XmlElement]
         public string title;
+
         [XmlElement]
         public TYPE_BOOK type;
+
         [XmlElement]
         public bool checkedOut;
+
         [XmlElement]
         public string rentedBy;
+
         [XmlElement]
         public DateTime dueDate;
 
@@ -66,7 +71,7 @@ namespace Final_Project
         //The getType method
         //Purpose: To return the value of type
         //Parameters: None
-        //Return: type in the form of a string
+        //Return: type in the form of a TYPE_BOOK enum
         public TYPE_BOOK getType()
         {
             return type;
@@ -87,6 +92,7 @@ namespace Final_Project
         //Return: rentedBy in the form of a Patron object
         public Patron getRentedBy()
         {
+            //Use Linq expression to get rentedBy Patron and return it
             return Library.getInstance().patrons.First(x => x.uniqueId == rentedBy);
         } // end method getRentedBy()
 
@@ -110,7 +116,7 @@ namespace Final_Project
 
         //The setType method
         //Purpose: To set type to the given value
-        //Parameters: A string represented as _type
+        //Parameters: A TYPE_BOOK enum represented as _type
         //Return: None
         public void setType(TYPE_BOOK _type)
         {

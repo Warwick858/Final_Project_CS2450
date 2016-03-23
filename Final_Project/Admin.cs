@@ -8,13 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections.ObjectModel;
 
 namespace Final_Project
 {
     public partial class Admin : Form
     {
         //Data Members:
-        private List<Book> overdueBooks;
+        private Library library;
 
         //The default constructor
         //Purpose: To initialize data members to default values
@@ -22,12 +23,9 @@ namespace Final_Project
         //Return: None
         public Admin()
         {
-            overdueBooks = new List<Book>();
-
-            //Read overdue books from file
-            readData();
-
             InitializeComponent();
+
+            readData();
         } // end default constructor
 
         //The readData method
@@ -36,15 +34,31 @@ namespace Final_Project
         //Return: None
         public void readData()
         {
-            //
-            //StreamReader data = new StreamReader("C://test.txt");
+            //Create streamReader object using library.xml
+            StreamReader data = new StreamReader(Environment.CurrentDirectory + "/library.xml");
+
+            //Read in XML
+            Library.getInstance().readBooks(data);
+
+            //Get instance of Library and save 
+            library = Library.getInstance();
+
+            foreach (Book book in library.getBooks())
+            {
+                allBooksListBox.Items.Add(book.getTitle());
+            }
+
+            foreach (Patron patron in library.getPatrons())
+            {
+                allPatronsListBox.Items.Add(patron.getName());
+            }
+
+            foreach (Book book in library.getOverdueBooks())
+            {
+                allBooksListBox.Items.Add(book.getTitle());
+            }
 
 
-
-            //overdueBooks = 
-
-            //
-            //overdueBooksListBox.Items.Add(overdueBooks);
         } // end method readData()
 
         //The doneBtn_Click method
