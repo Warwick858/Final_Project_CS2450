@@ -30,6 +30,8 @@ namespace Final_Project
         //Return: None
         public Account(Patron _patron)
         {
+            InitializeComponent();
+
             patron = _patron;
         } // end parameterized constructor
 
@@ -45,7 +47,7 @@ namespace Final_Project
                 foreach (Book book in patron.getMyBooks())
                 {
                     //Add it to the currentBooksListBox
-                    currentBooksListBox.Items.Add(book.getTitle() + book.getDueDate());
+                    currentBooksListBox.Items.Add(book.getTitle() + " - Due: " + book.getDueDate());
                 } // end foreach
             } // end if
         } // end method Account_Load()

@@ -28,7 +28,7 @@ namespace Final_Project
         [XmlElement]
         public string rentedBy;
 
-        [XmlElement]
+        [XmlElement(DataType = "date")]
         public DateTime dueDate;
 
         //The default constructor
@@ -154,12 +154,19 @@ namespace Final_Project
         //Purpose: 
         //Parameters: 
         //Return: 
-        public void rentBook()
+        public void rentBook(Patron _renter, DateTime _dateCheckedOut)
         {
-            //
+            if (type == TYPE_BOOK.ADULT)
+                dueDate = _dateCheckedOut.AddDays(14);
+            else if (type == TYPE_BOOK.CHILD)
+                dueDate = _dateCheckedOut.AddDays(7);
+            else if (type == TYPE_BOOK.DVD)
+                dueDate = _dateCheckedOut.AddDays(2);
+            else
+                dueDate = _dateCheckedOut.AddDays(3);
 
-
-            //
+            rentedBy = _renter.uniqueId;
+            
             checkedOut = true;
         } // end method rentBook()
 

@@ -71,7 +71,7 @@
             this.booksLbl.BackColor = System.Drawing.Color.Transparent;
             this.booksLbl.Font = new System.Drawing.Font("DengXian", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.booksLbl.ForeColor = System.Drawing.Color.DarkRed;
-            this.booksLbl.Location = new System.Drawing.Point(155, 120);
+            this.booksLbl.Location = new System.Drawing.Point(146, 120);
             this.booksLbl.Name = "booksLbl";
             this.booksLbl.Size = new System.Drawing.Size(97, 34);
             this.booksLbl.TabIndex = 18;
@@ -83,7 +83,7 @@
             this.patronsLbl.BackColor = System.Drawing.Color.Transparent;
             this.patronsLbl.Font = new System.Drawing.Font("DengXian", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.patronsLbl.ForeColor = System.Drawing.Color.DarkRed;
-            this.patronsLbl.Location = new System.Drawing.Point(511, 120);
+            this.patronsLbl.Location = new System.Drawing.Point(510, 120);
             this.patronsLbl.Name = "patronsLbl";
             this.patronsLbl.Size = new System.Drawing.Size(118, 34);
             this.patronsLbl.TabIndex = 19;
@@ -95,7 +95,7 @@
             this.overdueBooksLbl.BackColor = System.Drawing.Color.Transparent;
             this.overdueBooksLbl.Font = new System.Drawing.Font("DengXian", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.overdueBooksLbl.ForeColor = System.Drawing.Color.DarkRed;
-            this.overdueBooksLbl.Location = new System.Drawing.Point(826, 120);
+            this.overdueBooksLbl.Location = new System.Drawing.Point(833, 120);
             this.overdueBooksLbl.Name = "overdueBooksLbl";
             this.overdueBooksLbl.Size = new System.Drawing.Size(223, 34);
             this.overdueBooksLbl.TabIndex = 20;
@@ -108,9 +108,9 @@
             this.allBooksListBox.ForeColor = System.Drawing.Color.White;
             this.allBooksListBox.FormattingEnabled = true;
             this.allBooksListBox.ItemHeight = 25;
-            this.allBooksListBox.Location = new System.Drawing.Point(54, 162);
+            this.allBooksListBox.Location = new System.Drawing.Point(26, 162);
             this.allBooksListBox.Name = "allBooksListBox";
-            this.allBooksListBox.Size = new System.Drawing.Size(298, 354);
+            this.allBooksListBox.Size = new System.Drawing.Size(336, 354);
             this.allBooksListBox.Sorted = true;
             this.allBooksListBox.TabIndex = 21;
             // 
@@ -121,9 +121,9 @@
             this.allPatronsListBox.ForeColor = System.Drawing.Color.White;
             this.allPatronsListBox.FormattingEnabled = true;
             this.allPatronsListBox.ItemHeight = 25;
-            this.allPatronsListBox.Location = new System.Drawing.Point(421, 162);
+            this.allPatronsListBox.Location = new System.Drawing.Point(401, 162);
             this.allPatronsListBox.Name = "allPatronsListBox";
-            this.allPatronsListBox.Size = new System.Drawing.Size(298, 354);
+            this.allPatronsListBox.Size = new System.Drawing.Size(336, 354);
             this.allPatronsListBox.Sorted = true;
             this.allPatronsListBox.TabIndex = 22;
             // 
@@ -134,9 +134,9 @@
             this.overdueBooksListBox.ForeColor = System.Drawing.Color.White;
             this.overdueBooksListBox.FormattingEnabled = true;
             this.overdueBooksListBox.ItemHeight = 25;
-            this.overdueBooksListBox.Location = new System.Drawing.Point(788, 162);
+            this.overdueBooksListBox.Location = new System.Drawing.Point(776, 162);
             this.overdueBooksListBox.Name = "overdueBooksListBox";
-            this.overdueBooksListBox.Size = new System.Drawing.Size(298, 354);
+            this.overdueBooksListBox.Size = new System.Drawing.Size(336, 354);
             this.overdueBooksListBox.Sorted = true;
             this.overdueBooksListBox.TabIndex = 23;
             // 

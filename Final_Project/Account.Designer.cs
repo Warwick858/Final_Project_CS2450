@@ -49,9 +49,9 @@
             this.patronNameLbl.ForeColor = System.Drawing.Color.DarkRed;
             this.patronNameLbl.Location = new System.Drawing.Point(285, 118);
             this.patronNameLbl.Name = "patronNameLbl";
-            this.patronNameLbl.Size = new System.Drawing.Size(162, 24);
+            this.patronNameLbl.Size = new System.Drawing.Size(188, 24);
             this.patronNameLbl.TabIndex = 46;
-            this.patronNameLbl.Text = "John Goodman";
+            this.patronNameLbl.Text = "Place Holder Text";
             // 
             // patronLbl
             // 
@@ -101,15 +101,9 @@
             this.currentBooksListBox.ForeColor = System.Drawing.Color.White;
             this.currentBooksListBox.FormattingEnabled = true;
             this.currentBooksListBox.ItemHeight = 25;
-            this.currentBooksListBox.Items.AddRange(new object[] {
-            "Moby Dick",
-            "Harry Potter",
-            "Clear & Present Danger",
-            "Monkey Tag",
-            "The DaVinci Code"});
-            this.currentBooksListBox.Location = new System.Drawing.Point(200, 171);
+            this.currentBooksListBox.Location = new System.Drawing.Point(93, 171);
             this.currentBooksListBox.Name = "currentBooksListBox";
-            this.currentBooksListBox.Size = new System.Drawing.Size(240, 304);
+            this.currentBooksListBox.Size = new System.Drawing.Size(394, 304);
             this.currentBooksListBox.TabIndex = 71;
             // 
             // returnItemsLbl
@@ -131,9 +125,9 @@
             this.returningBooksListBox.ForeColor = System.Drawing.Color.White;
             this.returningBooksListBox.FormattingEnabled = true;
             this.returningBooksListBox.ItemHeight = 25;
-            this.returningBooksListBox.Location = new System.Drawing.Point(723, 171);
+            this.returningBooksListBox.Location = new System.Drawing.Point(657, 171);
             this.returningBooksListBox.Name = "returningBooksListBox";
-            this.returningBooksListBox.Size = new System.Drawing.Size(240, 304);
+            this.returningBooksListBox.Size = new System.Drawing.Size(394, 304);
             this.returningBooksListBox.TabIndex = 73;
             // 
             // returnBtn
@@ -145,7 +139,7 @@
             this.returnBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.returnBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.returnBtn.ForeColor = System.Drawing.Color.White;
-            this.returnBtn.Location = new System.Drawing.Point(518, 237);
+            this.returnBtn.Location = new System.Drawing.Point(519, 237);
             this.returnBtn.Name = "returnBtn";
             this.returnBtn.Size = new System.Drawing.Size(105, 41);
             this.returnBtn.TabIndex = 74;
@@ -179,7 +173,7 @@
             this.cancelReturnBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelReturnBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelReturnBtn.ForeColor = System.Drawing.Color.White;
-            this.cancelReturnBtn.Location = new System.Drawing.Point(518, 367);
+            this.cancelReturnBtn.Location = new System.Drawing.Point(519, 367);
             this.cancelReturnBtn.Name = "cancelReturnBtn";
             this.cancelReturnBtn.Size = new System.Drawing.Size(105, 41);
             this.cancelReturnBtn.TabIndex = 76;
