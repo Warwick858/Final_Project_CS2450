@@ -55,6 +55,15 @@ namespace Final_Project
             Close();
         } // end method closeToolStripMenuItem_Click()
 
+        //The changeTodaysDateToolStripMenuItem_Click method
+        //Purpose: To initialize and show the FastForward form
+        //Parameters: The object generating the event and the event args
+        //Return: None
+        private void changeTodaysDateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        } // end method changeTodaysDateToolStripMenuItem_Click()
+
         //The adminPicBox_Click method
         //Purpose: To instantiate and show the AdminForm
         //Parameters: The object generating the event and the event args
@@ -194,5 +203,7 @@ namespace Final_Project
             }
 
         } // end method MainForm_FormClosing()
+
+
     } // end class MainForm
 } // end namespace Final_Project
