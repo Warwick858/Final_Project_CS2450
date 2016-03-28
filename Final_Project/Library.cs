@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using System.Windows.Forms;
 
 namespace Final_Project
 {
@@ -91,8 +92,12 @@ namespace Final_Project
         {
             //return (List<Book>)books.Where(x => overdueBooks.Exists(y => y == x.uniqueId));
 
+            DateTime currentDate = getCurrentDate();
+
+            return books.Where(x => x.getDueDate().Date.CompareTo(currentDate.Date) < 0).ToList<Book>();  // zreview (change date to virtual date later)
+
             //Use Linq and lambda expression to get a list of all the overdue books
-            return books.Where(x => x.getDueDate().CompareTo(DateTime.Today) < 0).ToList<Book>();  // zreview (change date to virtual date later)
+            //return books.Where(x => x.getDueDate() > currentDate).ToList<Book>();  // zreview (change date to virtual date later)
         } // end method getOverdueBooks()
 
         //The getPatrons method
@@ -103,6 +108,28 @@ namespace Final_Project
         {
             return patrons;
         } // end method getPatrons()
+
+        //The getCurrentDate method
+        //Purpose: To return the selected date from the fastforward form, or todays date is fastforward form is null
+        //Parameters: None
+        //Return: currentDate in the form of a DateTime object
+        public DateTime getCurrentDate()
+        {
+            //Initialize currentDate to Now
+            DateTime currentDate = DateTime.Now;
+
+            //If FastForward form exists
+            if (Application.OpenForms.OfType<FastForward>().Any())
+            {
+                //Get a reference to the form
+                FastForward fastForward = Application.OpenForms.OfType<FastForward>().First();
+
+                //Get the calendarFF control's selected date
+                currentDate = fastForward.calendarFF.SelectionRange.Start;
+            } // end if
+
+            return currentDate;
+        } // end method getCurrentDate()
 
         //The readBooks method
         //Purpose: To read books from file and save as books

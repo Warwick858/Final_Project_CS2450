@@ -61,7 +61,19 @@ namespace Final_Project
         //Return: None
         private void changeTodaysDateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            //If FastForward form already exists
+            if (Application.OpenForms.OfType<FastForward>().Any())
+            {
+                //Focus on it
+                Application.OpenForms.OfType<FastForward>().First().Focus();
+            } // end if
+            else // FastForward form does NOT exist
+            {
+                //Create new FastForward Form and show it
+                FastForward fastForward = new FastForward();
+                fastForward.Owner = this;
+                fastForward.Show();
+            } // end else
         } // end method changeTodaysDateToolStripMenuItem_Click()
 
         //The adminPicBox_Click method
@@ -72,6 +84,7 @@ namespace Final_Project
         {
             //Create new instance of AdminForm & show it
             Admin admin = new Admin();
+            admin.Owner = this;
             admin.Show();
         } // end method adminPicBox_Click()
 
@@ -83,6 +96,7 @@ namespace Final_Project
         {
             //Create new instance of RentBookForm & show it
             RentBook rentBook = new RentBook();
+            rentBook.Owner = this;
             rentBook.Show();
         } // end method rentPicBox_Click()
 
@@ -94,6 +108,7 @@ namespace Final_Project
         {
             //Create new instance of AccountForm & show it
             Account account = new Account();
+            account.Owner = this;
             account.Show();
         } // end method accountPicBox_Click()
 

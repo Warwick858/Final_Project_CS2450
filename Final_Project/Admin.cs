@@ -55,7 +55,7 @@ namespace Final_Project
 
             foreach (Book book in library.getOverdueBooks())
             {
-                allBooksListBox.Items.Add(book.getTitle());
+                overdueBooksListBox.Items.Add(book.getTitle());
             }
 
 
