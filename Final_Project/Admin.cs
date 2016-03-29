@@ -40,6 +40,8 @@ namespace Final_Project
             //Read in XML
             Library.getInstance().readBooks(data);
 
+            data.Close();
+
             //Get instance of Library and save 
             library = Library.getInstance();
 
