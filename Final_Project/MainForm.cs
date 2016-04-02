@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
-using System.IO;
 
 namespace Final_Project
 {
@@ -33,6 +27,15 @@ namespace Final_Project
         public void setFilePath(string _filePath)
         {
             filePath = _filePath;
+        } // end method setFilePath()
+
+        //The setFilePath method
+        //Purpose: To set filePath to the given value
+        //Parameters: A string represented as _filePath
+        //Return: None
+        public string getFilePath()
+        {
+            return filePath;
         } // end method setFilePath()
 
         //The aboutToolStripMenuItem_Click method
@@ -106,30 +109,23 @@ namespace Final_Project
         //Return: None
         private void accountPicBox_Click(object sender, EventArgs e)
         {
-            //Create new instance of AccountForm & show it
-            //Account account = new Account();
-            //account.Owner = this;
-            //account.Show();
-
-            //ZACK's addition below
             if (Library.getInstance().patrons.Count == 0)
             {
                 //Create streamReader object using library.xml
                 StreamReader data = new StreamReader(Environment.CurrentDirectory + "/library.xml");
 
-                //Read in XML
+                //Read in XML data
                 Library.getInstance().readBooks(data);
 
+                //Close the stream
                 data.Close();
             } // end if
 
-            //
+            //Create new instance of SelectPatron and show it
             SelectPatron sp = new SelectPatron();
-
-            //
             DialogResult dr = sp.ShowDialog();
 
-            //
+            //If a patron was selected
             if (dr == DialogResult.OK)
             {
                 Patron patron = Library.getInstance().patrons.First(x => x.uniqueId == sp.currentPatronID);
@@ -142,23 +138,21 @@ namespace Final_Project
         } // end method accountPicBox_Click()
 
         //The MainForm_FormClosing method
-        //Purpose:
+        //Purpose: To write any changes back to XML file
         //Parameters: The object generating the event and the event args
         //Return: None
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             //class data member 'filePath' holds a string of the filePath originally opened to read the data.
             //Use filePath var to write data back to same file
-
             if (filePath != null)
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(Library));
                 TextWriter text = new StreamWriter(filePath);
                 serializer.Serialize(text, Library.getInstance());
-            }
 
+                text.Close();
+            } // end if
         } // end method MainForm_FormClosing()
-
-
     } // end class MainForm
 } // end namespace Final_Project

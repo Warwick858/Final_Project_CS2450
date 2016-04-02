@@ -45,6 +45,7 @@
             this.calendarFF.ShowToday = false;
             this.calendarFF.ShowTodayCircle = false;
             this.calendarFF.TabIndex = 0;
+            this.calendarFF.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.calendarFF_DateChanged);
             // 
             // instructionsLbl
             // 

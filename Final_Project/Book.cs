@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace Final_Project
@@ -47,7 +44,7 @@ namespace Final_Project
 
         //The parameterized constructor
         //Purpose: To set data members to given values
-        //Parameters: 
+        //Parameters: A string represented as _title, a TYPE_BOOK as _type, a bool as _checkedOut, and a DateTime as _dueDate
         //Return: None
         public Book(string _title, TYPE_BOOK _type, bool _checkedOut, DateTime _dueDate)
         {
@@ -151,11 +148,12 @@ namespace Final_Project
         } // end method setDueDate()
 
         //The rentBook method
-        //Purpose: 
-        //Parameters: 
-        //Return: 
+        //Purpose: To set the books dueDate, rentedBy, and checkedOut data members
+        //Parameters: A Patrons object represented as _renter, and a DateTime object as _dateCheckedOut
+        //Return: None
         public void rentBook(Patron _renter, DateTime _dateCheckedOut)
         {
+            //Set dueDate according to book type
             if (type == TYPE_BOOK.ADULT)
                 dueDate = _dateCheckedOut.AddDays(14);
             else if (type == TYPE_BOOK.CHILD)
@@ -165,23 +163,18 @@ namespace Final_Project
             else
                 dueDate = _dateCheckedOut.AddDays(3);
 
+            //Set rentedBy & checkedOut values
             rentedBy = _renter.uniqueId;
-            
             checkedOut = true;
         } // end method rentBook()
 
         //The returnBook method
-        //Purpose: 
-        //Parameters: 
-        //Return: 
+        //Purpose: To set this books checkedOut value to false
+        //Parameters: None
+        //Return: None
         public void returnBook()
         {
-            //
-
-            //
             checkedOut = false;
         } // end method returnBook()
-
-
     } // end class Book
 } // end namespace Final_Project

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace Final_Project
@@ -43,7 +41,7 @@ namespace Final_Project
 
         //The parameterized constructor
         //Purpose: To set data members to given values
-        //Parameters: 
+        //Parameters: A string represented as _name, a Type_Patron as _type, and a list of strings as _myBooks
         //Return: None
         public Patron(string _name, TYPE_PATRON _type, List<string> _myBooks)
         {
@@ -61,7 +59,7 @@ namespace Final_Project
                 maxBooks = 3;
             } // end else
                 
-            //
+            //Set patron's myBooks to given list, or to null if given list is empty
             myBooks = _myBooks == null ? new List<string>() : _myBooks;
         } // end parameterized constructor
 

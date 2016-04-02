@@ -1,14 +1,6 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Collections.ObjectModel;
 
 namespace Final_Project
 {
@@ -29,10 +21,10 @@ namespace Final_Project
         } // end default constructor
 
         //The readData method
-        //Purpose:
-        //Parameters:
+        //Purpose: To call readBooks() and populate the listBoxes with their corresponding data
+        //Parameters: None
         //Return: None
-        public void readData()
+        private void readData()
         {
             //Create streamReader object using library.xml
             StreamReader data = new StreamReader(Environment.CurrentDirectory + "/library.xml");
@@ -40,28 +32,36 @@ namespace Final_Project
             //Read in XML
             Library.getInstance().readBooks(data);
 
+            //Close the stream
             data.Close();
 
             //Get instance of Library and save 
             library = Library.getInstance();
 
+            //Populate list boxes with appropriate data
             foreach (Book book in library.getBooks())
             {
                 allBooksListBox.Items.Add(book.getTitle());
-            }
-
+            } // end foreach
             foreach (Patron patron in library.getPatrons())
             {
                 allPatronsListBox.Items.Add(patron.getName());
-            }
+            } // end foreach
+            foreach (Book book in library.getOverdueBooks())
+            {
+                overdueBooksListBox.Items.Add(book.getTitle());
+            } // end foreach
+        } // end method readData()
+
+        public void refreshOverdueBooks()
+        {
+            overdueBooksListBox.Items.Clear();
 
             foreach (Book book in library.getOverdueBooks())
             {
                 overdueBooksListBox.Items.Add(book.getTitle());
-            }
-
-
-        } // end method readData()
+            } // end foreach
+        }
 
         //The doneBtn_Click method
         //Purpose: To terminate the application and close the program

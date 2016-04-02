@@ -100,6 +100,7 @@
             this.currentBooksListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.currentBooksListBox.ForeColor = System.Drawing.Color.White;
             this.currentBooksListBox.FormattingEnabled = true;
+            this.currentBooksListBox.HorizontalScrollbar = true;
             this.currentBooksListBox.ItemHeight = 25;
             this.currentBooksListBox.Location = new System.Drawing.Point(93, 171);
             this.currentBooksListBox.Name = "currentBooksListBox";
@@ -124,6 +125,7 @@
             this.returningBooksListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.returningBooksListBox.ForeColor = System.Drawing.Color.White;
             this.returningBooksListBox.FormattingEnabled = true;
+            this.returningBooksListBox.HorizontalScrollbar = true;
             this.returningBooksListBox.ItemHeight = 25;
             this.returningBooksListBox.Location = new System.Drawing.Point(657, 171);
             this.returningBooksListBox.Name = "returningBooksListBox";
