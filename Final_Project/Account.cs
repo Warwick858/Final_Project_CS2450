@@ -12,15 +12,6 @@ namespace Final_Project
         //Data Members:
         private Patron patron;
 
-        //The default constructor
-        //Purpose: To initialize data members to default values
-        //Parameters: None
-        //Return: None
-        //public Account()
-        //{
-        //    InitializeComponent();
-        //} // end default constructor
-
         //The parameterized constructor
         //Purpose: To set data members to given values
         //Parameters: 
@@ -169,9 +160,6 @@ namespace Final_Project
                 } // end if
             } // end for
 
-            //Write to file
-            writeData();
-
             //Close AccountForm
             Close();
         } // end method doneBtn_Click()
@@ -191,6 +179,9 @@ namespace Final_Project
                 book.checkedOut = false;
                 book.rentedBy = "";
             } // end foreach
+
+            //Write to file
+            writeData();
 
             //Clear the returningBooks list box
             returningBooksListBox.Items.Clear();

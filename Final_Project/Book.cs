@@ -166,6 +166,7 @@ namespace Final_Project
             //Set rentedBy & checkedOut values
             rentedBy = _renter.uniqueId;
             checkedOut = true;
+            _renter.myBooks.Add(uniqueId);
         } // end method rentBook()
 
         //The returnBook method

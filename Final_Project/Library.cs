@@ -88,14 +88,9 @@ namespace Final_Project
         //Return: overdueBooks in the form of a List of Book objects
         public List<Book> getOverdueBooks()
         {
-            //return (List<Book>)books.Where(x => overdueBooks.Exists(y => y == x.uniqueId));
-
             DateTime currentDate = getCurrentDate();
 
-            return books.Where(x => x.getDueDate().Date.CompareTo(currentDate.Date) < 0).ToList<Book>();  // zreview (change date to virtual date later)
-
-            //Use Linq and lambda expression to get a list of all the overdue books
-            //return books.Where(x => x.getDueDate() > currentDate).ToList<Book>();  // zreview (change date to virtual date later)
+            return books.Where(x => x.getDueDate().Date.CompareTo(currentDate.Date) < 0 && x.checkedOut).ToList<Book>();
         } // end method getOverdueBooks()
 
         //The getPatrons method
