@@ -38,6 +38,13 @@ namespace Final_Project
                     patronListBox.SetItemChecked(i, false);
                 } // end if
             } // end for
+
+            //If user unchecks a patron
+            if (e.NewValue == CheckState.Unchecked)
+            {
+                //Clear patron label
+                selectedPatronNameLbl.Text = "";
+            } // end if
         } // end method patronListBox_ItemCheck()
 
         //The patronListBox_SelectedIndexChanged method

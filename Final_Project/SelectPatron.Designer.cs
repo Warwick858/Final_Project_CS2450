@@ -62,6 +62,7 @@
             this.patronListBox.Size = new System.Drawing.Size(445, 354);
             this.patronListBox.Sorted = true;
             this.patronListBox.TabIndex = 14;
+            this.patronListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.patronListBox_ItemCheck);
             this.patronListBox.SelectedIndexChanged += new System.EventHandler(this.patronListBox_SelectedIndexChanged);
             // 
             // doneBtn
